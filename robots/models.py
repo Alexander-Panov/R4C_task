@@ -10,3 +10,6 @@ class Robot(models.Model):
     def __str__(self):
         return self.serial
 
+    # Хранение в обратном хронологическом порядке
+    class Meta:
+        ordering = ['-created']
