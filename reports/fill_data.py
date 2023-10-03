@@ -4,6 +4,8 @@ from robots.models import Robot
 
 """
 Generate random data for database
+Requirement:
+* faker
 """
 
 fake = Faker()
