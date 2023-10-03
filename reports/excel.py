@@ -13,7 +13,7 @@ def create_xlsx_report(name: str):
     week_robots_sold = (Robot.objects.filter(created__gte=timezone.now() - datetime.timedelta(weeks=1))
                         .values('model', 'version', )
                         .annotate(count=Count('created'))
-                        .order_by())
+                        .order_by('model'))
     wb = Workbook()
     # delete default sheet
     for defaults in wb.sheetnames:
