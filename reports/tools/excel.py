@@ -15,9 +15,11 @@ def create_xlsx_report(name: str):
                         .annotate(count=Count('created'))
                         .order_by('model'))
     wb = Workbook()
-    # delete default sheet
-    for defaults in wb.sheetnames:
-        wb.remove(wb[defaults])
+
+    if week_robots_sold.exists():
+        # delete default sheet
+        for defaults in wb.sheetnames:
+            wb.remove(wb[defaults])
 
     # Unfortunately, django doesn't have something like QuerySet.groupby('model')
     for model, model_group in itertools.groupby(week_robots_sold, key=operator.itemgetter('model')):  # group by model

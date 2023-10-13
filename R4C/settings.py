@@ -71,6 +71,9 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'R4C.wsgi.application'
 
+if DEBUG:
+    EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'  # Теперь все письма будут отсылаться в консоль
+
 # Database
 # https://docs.djangoproject.com/en/3.0/ref/settings/#databases
 
